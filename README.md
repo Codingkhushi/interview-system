@@ -1,4 +1,4 @@
-# Wingmann Interview Management System
+## Interview Management System
 
 A full-stack internal tool for managing user verification interviews at Wingmann — a serious-intent dating platform where every member completes a short interview before gaining access.
 
@@ -6,16 +6,25 @@ A full-stack internal tool for managing user verification interviews at Wingmann
 
 | Layer    | Technology                          |
 |----------|-------------------------------------|
-| Frontend | React 18, Vite, React Router v6, CSS Modules |
-| Backend  | Node.js, Express, Socket.io         |
+| Frontend | React 19, Vite 8, React Router v7, CSS Modules |
+| Backend  | Node.js 24, Express 5, Socket.io 4  |
 | Database | PostgreSQL (with raw SQL migrations)|
 | Auth     | Google OAuth 2.0 (users) + JWT + bcrypt (interviewers) |
-| Realtime | WebSocket via Socket.io (outcome push) |
+| Testing  | Jest, Supertest (Backend) + Vitest, RTL (Frontend) |
+
+## Quick Start (Start in one command)
+
+Once you have your `.env` files set up (see below), you can start both services from the root directory:
+
+```bash
+npm run install:all    # Install all dependencies (root, backend, frontend)
+npm run dev            # Start both backend and frontend concurrently
+```
 
 ## Architecture
 
 ```
-frontend/              React SPA (three role-based views)
+package.json           Root configuration for single-command start
 backend/
   src/
     config/            DB pool, JWT utilities
@@ -23,7 +32,13 @@ backend/
     migrations/        001–006 SQL files + migration runner
     db/                slotGenerator.js, bookingTransaction.js
     routes/            auth.js, user.js, interviewer.js, admin.js
+    tests/             Jest integration tests (auth, slots)
     index.js           Express + Socket.io server
+frontend/
+  src/
+    components/ui/     Shared UI components (with Vitest unit tests)
+    pages/             Role-based views (User, Interviewer, Admin)
+    tests/             Vitest setup
 ```
 
 ### Key design decisions
@@ -70,6 +85,28 @@ cd frontend
 cp .env.example .env
 npm install
 npm run dev           # starts on http://localhost:5173
+```
+
+## Testing
+
+The project includes both backend integration tests and frontend unit tests.
+
+### Running all tests
+From the root directory:
+```bash
+npm run test:all
+```
+
+### Backend Tests (Jest)
+```bash
+cd backend
+npm test
+```
+
+### Frontend Tests (Vitest)
+```bash
+cd frontend
+npm test
 ```
 
 ### 4. Google OAuth setup
