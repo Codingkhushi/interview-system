@@ -1,0 +1,175 @@
+/* ── Wingmann IMS — Global Design System ─────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+/* ── Tokens ──────────────────────────────────────────────────────────────── */
+:root {
+  /* Brand palette */
+  --plum:          #5B2E68;
+  --plum-deep:     #3D1D47;
+  --plum-light:    #7A4089;
+  --plum-muted:    #8B6096;
+  --plum-wash:     #F2EBF5;
+  --plum-surface:  #EDE0F2;
+
+  --cream:         #F8F3ED;
+  --cream-warm:    #EFE6D8;
+  --cream-border:  #DDD0C8;
+
+  --gold:          #C9963A;
+  --gold-light:    #E8B85C;
+  --gold-pale:     #FBF0DC;
+
+  --sage:          #4A7C6B;
+  --sage-light:    #EBF3EF;
+
+  --rose:          #C0566A;
+  --rose-light:    #F7E8EC;
+
+  --ink:           #1A0F22;
+  --ink-muted:     #4A3857;
+  --ink-faint:     #7A6885;
+
+  --white:         #FFFFFF;
+
+  /* Semantic */
+  --bg-page:       var(--plum);
+  --bg-surface:    rgba(255,255,255,0.06);
+  --bg-card:       rgba(255,255,255,0.09);
+  --bg-card-hover: rgba(255,255,255,0.13);
+  --border-subtle: rgba(255,255,255,0.10);
+  --border-mid:    rgba(255,255,255,0.18);
+  --border-strong: rgba(255,255,255,0.28);
+
+  --text-primary:   #F8F3ED;
+  --text-secondary: rgba(248,243,237,0.65);
+  --text-tertiary:  rgba(248,243,237,0.38);
+  --text-on-light:  var(--ink);
+
+  /* Type */
+  --font-display: 'DM Serif Display', 'Test TiemposFine', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  /* Spacing */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Radii */
+  --r-sm:   6px;
+  --r-md:   10px;
+  --r-lg:   16px;
+  --r-xl:   24px;
+  --r-full: 9999px;
+
+  /* Shadows */
+  --shadow-card:  0 2px 16px rgba(26,15,34,0.28), 0 1px 4px rgba(26,15,34,0.18);
+  --shadow-modal: 0 8px 48px rgba(26,15,34,0.48);
+  --shadow-gold:  0 0 0 2px var(--gold);
+
+  /* Motion */
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:    cubic-bezier(0.7, 0, 0.84, 0);
+  --duration-1: 120ms;
+  --duration-2: 200ms;
+  --duration-3: 320ms;
+}
+
+/* ── Light mode override (admin dashboard) ───────────────────────────────── */
+[data-theme="light"] {
+  --bg-page:        var(--cream);
+  --bg-surface:     var(--white);
+  --bg-card:        var(--white);
+  --bg-card-hover:  #F9F5F2;
+  --border-subtle:  var(--cream-border);
+  --border-mid:     #C8B8C4;
+  --border-strong:  var(--plum-muted);
+
+  --text-primary:   var(--ink);
+  --text-secondary: var(--ink-muted);
+  --text-tertiary:  var(--ink-faint);
+}
+
+/* ── Base reset ──────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: var(--font-body);
+  background:  var(--bg-page);
+  color:       var(--text-primary);
+  min-height:  100vh;
+  line-height: 1.6;
+}
+
+/* ── Typography scale ────────────────────────────────────────────────────── */
+.display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+.display-md {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  line-height: 1.25;
+}
+
+.label-caps {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-mid); border-radius: 3px; }
+
+/* ── Focus ring ──────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+/* ── Page enter animation ────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-enter {
+  animation: fadeUp var(--duration-3) var(--ease-out) both;
+}
+
+/* ── Grain overlay (decorative) ──────────────────────────────────────────── */
+.grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.032;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 128px;
+  z-index: 9999;
+}

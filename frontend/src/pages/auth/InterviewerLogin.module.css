@@ -1,0 +1,104 @@
+.page {
+  min-height:      100vh;
+  background:      var(--plum);
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  padding:         var(--space-8);
+  position:        relative;
+  overflow:        hidden;
+}
+
+.petal {
+  position:      absolute;
+  width:         500px;
+  height:        500px;
+  border-radius: 50%;
+  background:    radial-gradient(circle, rgba(201,150,58,0.12) 0%, transparent 70%);
+  top:           -150px;
+  right:         -100px;
+  pointer-events: none;
+}
+
+.card {
+  position:      relative;
+  z-index:       1;
+  width:         100%;
+  max-width:     400px;
+  background:    var(--bg-card);
+  border:        1px solid var(--border-subtle);
+  border-radius: var(--r-xl);
+  padding:       var(--space-8);
+  backdrop-filter: blur(20px);
+  animation:     fadeUp var(--duration-3) var(--ease-out) both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.back {
+  display:         block;
+  font-size:       0.8rem;
+  color:           var(--text-tertiary);
+  text-decoration: none;
+  margin-bottom:   var(--space-6);
+  transition:      color var(--duration-2);
+}
+.back:hover { color: var(--text-secondary); }
+
+.logoRow {
+  display:         flex;
+  align-items:     center;
+  gap:             8px;
+  margin-bottom:   var(--space-6);
+}
+
+.logoMark {
+  width:           32px;
+  height:          32px;
+  background:      var(--gold);
+  color:           var(--ink);
+  font-family:     var(--font-display);
+  font-size:       1rem;
+  border-radius:   var(--r-md);
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+}
+
+.logoName {
+  font-family: var(--font-display);
+  font-size:   1.1rem;
+  color:       var(--cream);
+}
+
+.title {
+  font-family:    var(--font-display);
+  font-size:      1.7rem;
+  color:          var(--cream);
+  margin-bottom:  var(--space-2);
+  letter-spacing: -0.01em;
+}
+
+.sub {
+  font-size:     0.85rem;
+  color:         var(--text-tertiary);
+  margin-bottom: var(--space-8);
+}
+
+.form {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-5);
+}
+
+.error {
+  font-size:     0.82rem;
+  color:         var(--rose);
+  padding:       var(--space-3) var(--space-4);
+  background:    rgba(192,86,106,0.1);
+  border:        1px solid rgba(192,86,106,0.2);
+  border-radius: var(--r-md);
+}

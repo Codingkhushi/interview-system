@@ -1,0 +1,74 @@
+.card {
+  background:    var(--bg-card);
+  border:        1px solid var(--border-subtle);
+  border-radius: var(--r-lg);
+  padding:       var(--space-6);
+  backdrop-filter: blur(12px);
+}
+
+.hoverable {
+  cursor:     pointer;
+  transition: background var(--duration-2) var(--ease-out),
+              border-color var(--duration-2),
+              transform var(--duration-2) var(--ease-out),
+              box-shadow var(--duration-2) var(--ease-out);
+}
+.hoverable:hover {
+  background:   var(--bg-card-hover);
+  border-color: var(--border-mid);
+  transform:    translateY(-2px);
+  box-shadow:   var(--shadow-card);
+}
+
+/* ── Badge ─────────────────────────────────────────────────────────────── */
+.badge {
+  display:       inline-block;
+  padding:       2px 10px;
+  border-radius: var(--r-full);
+  font-size:     0.72rem;
+  font-weight:   500;
+  letter-spacing: 0.04em;
+}
+.badge_default  { background: var(--bg-surface);   color: var(--text-secondary); }
+.badge_gold     { background: var(--gold-pale);    color: var(--gold); }
+.badge_plum     { background: var(--plum-wash);    color: var(--plum-deep); }
+.badge_sage     { background: var(--sage-light);   color: var(--sage); }
+.badge_rose     { background: var(--rose-light);   color: var(--rose); }
+
+/* ── Status pill ────────────────────────────────────────────────────────── */
+.pill {
+  display:       inline-flex;
+  align-items:   center;
+  gap:           5px;
+  padding:       3px 10px;
+  border-radius: var(--r-full);
+  font-size:     0.75rem;
+  font-weight:   500;
+  letter-spacing: 0.02em;
+}
+.pill::before {
+  content:       '';
+  width:         6px;
+  height:        6px;
+  border-radius: 50%;
+  background:    currentColor;
+  flex-shrink:   0;
+}
+
+.pill_available  { background: rgba(74,124,107,0.15);  color: #6dbfa3; }
+.pill_booked     { background: rgba(201,150,58,0.15);  color: var(--gold-light); }
+.pill_pending    { background: rgba(139,96,150,0.2);   color: var(--plum-muted); }
+.pill_confirmed  { background: rgba(74,124,107,0.15);  color: #6dbfa3; }
+.pill_cancelled  { background: rgba(192,86,106,0.15);  color: var(--rose); }
+.pill_default    { background: var(--bg-surface);      color: var(--text-secondary); }
+
+/* Light theme */
+[data-theme="light"] .card {
+  background:    var(--white);
+  border-color:  var(--cream-border);
+  backdrop-filter: none;
+}
+[data-theme="light"] .hoverable:hover {
+  background:    #F9F5F2;
+  border-color:  var(--border-mid);
+}

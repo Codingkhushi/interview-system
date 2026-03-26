@@ -1,0 +1,118 @@
+.page {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-8);
+  padding-bottom: 120px; /* room for confirm strip */
+}
+
+.header { display: flex; flex-direction: column; gap: var(--space-2); }
+.title  { color: var(--cream); margin-top: var(--space-1); }
+.sub    { font-size: 0.875rem; color: var(--text-secondary); max-width: 440px; }
+
+/* ── Date group ───────────────────────────────────────────────────────── */
+.dateGroup { display: flex; flex-direction: column; gap: var(--space-3); }
+
+.dateLabel {
+  font-size:      0.78rem;
+  font-weight:    500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color:          var(--text-tertiary);
+}
+
+/* ── Slot chips ───────────────────────────────────────────────────────── */
+.slotsGrid {
+  display:               grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap:                   var(--space-3);
+}
+
+.slotChip {
+  display:        flex;
+  flex-direction: column;
+  gap:            4px;
+  padding:        var(--space-4) var(--space-4);
+  background:     var(--bg-card);
+  border:         1px solid var(--border-subtle);
+  border-radius:  var(--r-md);
+  cursor:         pointer;
+  text-align:     left;
+  transition:     background var(--duration-2), border-color var(--duration-2), transform var(--duration-1);
+}
+
+.slotChip:hover {
+  background:   var(--bg-card-hover);
+  border-color: var(--border-mid);
+  transform:    translateY(-1px);
+}
+
+.selectedChip {
+  background:   rgba(201,150,58,0.12) !important;
+  border-color: var(--gold) !important;
+  box-shadow:   0 0 0 1px var(--gold);
+}
+
+.slotTime {
+  font-size:   0.95rem;
+  font-weight: 600;
+  color:       var(--text-primary);
+}
+
+.slotWith {
+  font-size: 0.75rem;
+  color:     var(--text-tertiary);
+}
+
+/* ── Confirm strip ────────────────────────────────────────────────────── */
+.confirmStrip {
+  position:      fixed;
+  bottom:        var(--space-6);
+  left:          50%;
+  transform:     translateX(-50%);
+  background:    rgba(26,15,34,0.92);
+  border:        1px solid var(--gold);
+  border-radius: var(--r-xl);
+  padding:       var(--space-4) var(--space-6);
+  display:       flex;
+  align-items:   center;
+  gap:           var(--space-6);
+  backdrop-filter: blur(20px);
+  box-shadow:    0 8px 32px rgba(0,0,0,0.4);
+  animation:     slideUp 0.22s var(--ease-out) both;
+  z-index:       100;
+  flex-wrap:     wrap;
+}
+
+@keyframes slideUp {
+  from { transform: translateX(-50%) translateY(20px); opacity: 0; }
+  to   { transform: translateX(-50%) translateY(0);    opacity: 1; }
+}
+
+.confirmInfo { display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap; }
+
+.confirmDate  { font-size: 0.875rem; font-weight: 600; color: var(--cream); }
+.confirmTime  { font-size: 0.875rem; color: var(--gold-light); }
+.confirmWith  { font-size: 0.8rem;   color: var(--text-tertiary); }
+
+.confirmActions { display: flex; gap: var(--space-3); align-items: center; margin-left: auto; }
+
+.error {
+  font-size:  0.8rem;
+  color:      var(--rose);
+  flex-basis: 100%;
+}
+
+/* ── Loading / empty ─────────────────────────────────────────────────── */
+.spinner {
+  width:      40px; height: 40px;
+  border:     2px solid var(--border-mid);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation:  spin 0.8s linear infinite;
+  margin:     var(--space-12) auto;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.emptyCard { text-align: center; padding: var(--space-12); }
+.emptyTitle { font-family: var(--font-display); font-size: 1.3rem; color: var(--text-primary); margin-bottom: var(--space-2); }
+.emptyText  { font-size: 0.875rem; color: var(--text-secondary); }

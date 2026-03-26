@@ -1,0 +1,143 @@
+.page {
+  min-height:      100vh;
+  background:      var(--plum);
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  position:        relative;
+  overflow:        hidden;
+  padding:         var(--space-8);
+}
+
+/* ── Decorative petals ────────────────────────────────────────────────── */
+.petal1, .petal2, .petal3 {
+  position:      absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.petal1 {
+  width:      480px;
+  height:     480px;
+  background: radial-gradient(circle, rgba(201,150,58,0.18) 0%, transparent 70%);
+  top:        -120px;
+  right:      -80px;
+  animation:  float1 12s ease-in-out infinite;
+}
+
+.petal2 {
+  width:      320px;
+  height:     320px;
+  background: radial-gradient(circle, rgba(192,86,106,0.14) 0%, transparent 70%);
+  bottom:     -60px;
+  left:       -40px;
+  animation:  float2 16s ease-in-out infinite;
+}
+
+.petal3 {
+  width:      200px;
+  height:     200px;
+  background: radial-gradient(circle, rgba(122,64,137,0.25) 0%, transparent 70%);
+  top:        40%;
+  left:       15%;
+  animation:  float1 10s ease-in-out infinite reverse;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(20px, -20px) scale(1.04); }
+}
+@keyframes float2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(-16px, 16px) scale(1.03); }
+}
+
+/* ── Center content ───────────────────────────────────────────────────── */
+.center {
+  position:      relative;
+  z-index:       1;
+  max-width:     480px;
+  width:         100%;
+  text-align:    center;
+  animation:     fadeUp var(--duration-3) var(--ease-out) both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Logo row ─────────────────────────────────────────────────────────── */
+.logoRow {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  gap:             10px;
+  margin-bottom:   var(--space-10);
+}
+
+.logoMark {
+  width:           40px;
+  height:          40px;
+  border-radius:   var(--r-md);
+  background:      var(--gold);
+  color:           var(--ink);
+  font-family:     var(--font-display);
+  font-size:       1.25rem;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+}
+
+.logoName {
+  font-family:    var(--font-display);
+  font-size:      1.4rem;
+  color:          var(--cream);
+  letter-spacing: -0.01em;
+}
+
+/* ── Headline ─────────────────────────────────────────────────────────── */
+.headline {
+  color:         var(--cream);
+  margin-bottom: var(--space-5);
+}
+
+.headline em {
+  font-style: italic;
+  color:      var(--gold-light);
+}
+
+/* ── Subtext ──────────────────────────────────────────────────────────── */
+.sub {
+  font-size:     1rem;
+  color:         var(--text-secondary);
+  line-height:   1.7;
+  margin-bottom: var(--space-10);
+  max-width:     360px;
+  margin-left:   auto;
+  margin-right:  auto;
+}
+
+/* ── Actions ──────────────────────────────────────────────────────────── */
+.actions {
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  gap:             var(--space-4);
+  margin-bottom:   var(--space-8);
+}
+
+.divider {
+  font-size: 0.78rem;
+  color:     var(--text-tertiary);
+  letter-spacing: 0.08em;
+}
+
+/* ── Fine print ───────────────────────────────────────────────────────── */
+.note {
+  font-size:   0.75rem;
+  color:       var(--text-tertiary);
+  line-height: 1.6;
+  max-width:   300px;
+  margin:      0 auto;
+}
